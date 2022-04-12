@@ -9,7 +9,7 @@ app.set('view engine', 'html');
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    res.render('part10.html')
+    res.render('part100.html')
 })
 
 app.listen(8000, () => {
