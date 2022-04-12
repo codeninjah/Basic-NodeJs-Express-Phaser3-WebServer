@@ -118,20 +118,24 @@ function create ()
     var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
         function createBomb(){
-            var bomb = bombs.create(x, 16, 'bomb');
-            bomb.setBounce(1);
-            bomb.setCollideWorldBounds(true);
-            bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-            bomb.allowGravity = false;
+            if(!gameOver){
+                var bomb = bombs.create(x, 16, 'bomb');
+                bomb.setBounce(1);
+                bomb.setCollideWorldBounds(true);
+                bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+                bomb.allowGravity = false;
+            }
         }
 
         function scoreUp(){
-            score += 10;
-            scoreText.setText('Score: ' + score);
+            if(!gameOver){
+                score += 10;
+                scoreText.setText('Score: ' + score);
+            }
         }
 
-        setInterval(scoreUp, 2000)
-        setInterval(createBomb, 5000)
+            setInterval(scoreUp, 2000)
+            setInterval(createBomb, 5000)
 }
 
 function update ()
@@ -184,13 +188,13 @@ function collectStar (player, star)
 
 function hitBomb (player, bomb)
 {
-    this.physics.pause();
+        this.physics.pause();
 
-    player.setTint(0xff0000);
+        player.setTint(0xff0000);
 
-    player.anims.play('turn');
+        player.anims.play('turn');
 
-    gameOver = true;
+        gameOver = true;
 }
 
 </script>
