@@ -6,10 +6,10 @@ const app = express()
 app.engine('html', es6Renderer);
 app.set('views', 'views');
 app.set('view engine', 'html');
-app.use(express.static('public'))
+app.use(express.static('public/assets/spaceInvaders'))
 
 app.get('/', (req, res) => {
-    res.render('SpaceInvaders.html')
+    res.render('SpaceInvaders2.html')
 })
 
 app.listen(8000, () => {

@@ -1,0 +1,113 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Space invaders copy</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.js"></script>
+    <script src="/assets/spaceInvaders/howler.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+//Based on the following tutorial:
+//https://www.youtube.com/watch?v=8xMBzj8uZ7o
+
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    parent: 'game',
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: {y: 0},
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+}
+
+var game = new Phaser.Game(config)
+enemyInfo = {
+    width: 40,
+    height: 20,
+    count: {
+        row: 5,
+        col: 9
+    },
+    offset: {
+        top: 100,
+        left: 60
+    },
+    padding: 5
+}
+
+var move = new Howl({
+    src: ['../assets/spaceInvaders/move.mp3']
+})
+
+var shootSound = new Howl({
+    src: ['../assets/spaceInvaders/shoot.mp3']
+})
+
+var explosionSound = new Howl({
+    src: ['../assets/spaceInvaders/explosion.mp3']
+})
+
+var saucerSound = new Howl({
+    src: ['../assets/spaceInvaders/saucer.mp3'],
+    loop: true
+})
+
+
+function preload(){
+    this.load.image('shooter', './assets/spaceInvaders/cannon.png')
+    this.load.image('alien', '../assets/spaceInvaders/enemy.svg')
+    this.load.image('bullet', '../assets/spaceInvaders/bullet.svg')
+    this.load.image('saucer', '../assets/spaceInvaders/saucer.svg')
+}
+
+var score = 0;
+var lives = 3;
+var isStarted = false;
+var barriers = [];
+var ufoCount = 0;
+
+function create(){
+    scene = this;
+    cursors = scene.input.keyboard.createCursorKeys();
+    keyA = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    keyD = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    isShooting = false;
+    this.input.keyboard.addCapture('SPACE'); 
+    enemies = scene.physics.add.staticGroup();
+    playerLava = scene.add.rectangle(0, 0, 800, 10, 0x000).setOrigin(0)
+    enemyLava = scene.add.rectangle(0, 590, 800, 10, 0x000).setOrigin(0)
+    saucerLava = scene.add.rectangle(790, 0, 10, 600, 0x000).setOrigin(0)
+    scene.physics.add.existing(playerLava)
+    scene.physics.add.existing(enemyLava)
+    scene.physics.add.existing(saucerLava)
+
+    shooter = scene.physics.add.sprite(400, 560, 'shooter').setCollideWorldBounds(true)
+
+}
+
+function update(){
+
+}
+
+
+</script>
+
+</body>
+</html>
