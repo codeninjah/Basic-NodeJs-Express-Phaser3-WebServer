@@ -71,10 +71,13 @@ var saucerSound = new Howl({
 
 
 function preload(){
-    this.load.image('shooter', 'cannon.png')
-    this.load.image('alien', '../spaceInvaders/enemy.svg')
-    this.load.image('bullet', '../spaceInvaders/bullet.svg')
-    this.load.image('saucer', '../spaceInvaders/saucer.svg')
+
+    //this.load.path = "../assets/spaceInvaders/";
+
+    this.load.image('shooter', '../assets/spaceInvaders/cannon.png');
+    this.load.image('alien', '../assets/spaceInvaders/enemy.svg');
+    this.load.image('bullet', '../assets/spaceInvaders/bullet.svg');
+    this.load.image('saucer', '../assets/spaceInvaders/saucer.svg');
 }
 
 var score = 0;

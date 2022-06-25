@@ -6,7 +6,7 @@ const app = express()
 app.engine('html', es6Renderer);
 app.set('views', 'views');
 app.set('view engine', 'html');
-app.use(express.static('public/assets/spaceInvaders'))
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
     res.render('SpaceInvaders2.html')
