@@ -9,7 +9,7 @@ app.set('view engine', 'html');
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    res.render('SpaceInvaders2.html')
+    res.render('SpaceInvaders.html')
 })
 
 app.listen(8000, () => {
